@@ -5,13 +5,15 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Business Segment Selection</title>
 </head>
-<body>
-<table>
+<body style="background-color:snow;">
+<form action="PolicyCreation" method="post">
+<table align="center">
+<caption><h2>Select Business Segment</h2></caption>
 <tr>
 <td>Business-Segment</td>
-<td><select name="businessSegment" required>
+<td><select name="businessSegment" onchange='this.form.submit()' required>
   <option> </option>
   <option value="BS1">Business Auto</option>
   <option value="BS2">Restaurant</option>
@@ -22,6 +24,6 @@
 </tr>
 </table>
 <br>
-<center><input type="submit" value="Submit"></center>
+</form>
 </body>
 </html>

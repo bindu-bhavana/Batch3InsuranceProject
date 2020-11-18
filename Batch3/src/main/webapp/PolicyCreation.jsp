@@ -1,27 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
     <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Policy Creation Page</title>
 </head>
-<body>
-<table>
+<body style="background-color:snow;">
+<table align="center" cellpadding="5">
+<caption><h2>Please answer the below Questions!!!</h2></caption>
+<%!int count=1; %>
 <c:forEach var="pq" items="${PolicyQuestionsList}"> 
 <tr>
-<td>${pq.policyQuestionDescription}</td>
+<td><b><%=count %>. ${pq.policyQuestionDescription}</b></td>
 </tr>
 <tr>
-<td><input type="radio" value=${pq.policyQuestionId}></td><td>${pq.policyQuestionAnswer1}</td>
-<td>${pq.policyQuestionAnswer2}</td>
-<td>${pq.policyQuestionAnswer3}</td>
+<td><input type="radio" name="${pq.policyQuestionId}" value="${pq.policyQuestionWeightage1}">${pq.policyQuestionAnswer1}</td>
+<td><input type="radio" name="${pq.policyQuestionId}" value="${pq.policyQuestionWeightage2}">${pq.policyQuestionAnswer2}</td>
+<td><input type="radio" name="${pq.policyQuestionId}" value="${pq.policyQuestionWeightage3}">${pq.policyQuestionAnswer3}</td>
 </tr>
-<td><a href="UpdateEmployee?empcode=${emp.empcode}">Update</a></td>
-<td><a href="DeleteEmployee?empcode=${emp.empcode}">Delete</a></td>
-</tr>
+<%count++; %>
 </c:forEach>
+<%count=1; %>
 </table>
+<br>
+<br>
+<center><input type="submit" value="Calculate Premium" style="background-color:mistyrose"></center>
+<br>
 </body>
 </html>

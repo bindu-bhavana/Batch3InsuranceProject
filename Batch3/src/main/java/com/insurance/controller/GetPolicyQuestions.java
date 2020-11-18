@@ -1,10 +1,12 @@
 package com.insurance.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,6 +18,7 @@ import com.insurance.service.PolicyQuestionsServiceImpl;
 /**
  * Servlet implementation class GetPolicyQuestions
  */
+@WebServlet("/PolicyCreation")
 public class GetPolicyQuestions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -27,8 +30,7 @@ public class GetPolicyQuestions extends HttpServlet {
 		PolicyQuestionsService service=new PolicyQuestionsServiceImpl();
 		List<PolicyQuestions> pqlist=service.getPolicyQuestions(businessSegmentId);
 		request.setAttribute("PolicyQuestionsList",pqlist);
-		RequestDispatcher rd=request.getRequestDispatcher("/GetEmployees.jsp");
-		rd.forward(request, response);
+		request.getRequestDispatcher("/PolicyCreation.jsp").forward(request, response);
 	}
 
 	/**

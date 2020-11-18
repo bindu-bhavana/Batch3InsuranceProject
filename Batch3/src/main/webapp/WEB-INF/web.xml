@@ -46,6 +46,12 @@
   	<description></description>
   	<servlet-class>com.insurance.controller.GetPolicyQuestions</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>CalculatePremium</servlet-name>
+  	<display-name>CalculatePremium</display-name>
+  	<description></description>
+  	<servlet-class>com.insurance.controller.CalculatePremium</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Sample</servlet-name>
   	<url-pattern>/Sample</url-pattern>
@@ -73,5 +79,9 @@
   <servlet-mapping>
   	<servlet-name>GetPolicyQuestions</servlet-name>
   	<url-pattern>/GetPolicyQuestions</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CalculatePremium</servlet-name>
+  	<url-pattern>/CalculatePremium</url-pattern>
   </servlet-mapping>
 </web-app>
