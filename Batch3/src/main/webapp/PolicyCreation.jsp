@@ -10,15 +10,16 @@
 <body style="background-color:snow;">
 <table align="center" cellpadding="5">
 <caption><h2>Please answer the below Questions!!!</h2></caption>
+<form action="GetPolicyQuestions" method="post">
 <%!int count=1; %>
 <c:forEach var="pq" items="${PolicyQuestionsList}"> 
 <tr>
 <td><b><%=count %>. ${pq.policyQuestionDescription}</b></td>
 </tr>
 <tr>
-<td><input type="radio" name="${pq.policyQuestionId}" value="${pq.policyQuestionWeightage1}">${pq.policyQuestionAnswer1}</td>
-<td><input type="radio" name="${pq.policyQuestionId}" value="${pq.policyQuestionWeightage2}">${pq.policyQuestionAnswer2}</td>
-<td><input type="radio" name="${pq.policyQuestionId}" value="${pq.policyQuestionWeightage3}">${pq.policyQuestionAnswer3}</td>
+<td><input type="radio" name="Q<%=count%>" value="${pq.policyQuestionWeightage1}" required><label>${pq.policyQuestionAnswer1}</label></td>
+<td><input type="radio" name="Q<%=count%>" value="${pq.policyQuestionWeightage2}"><label>${pq.policyQuestionAnswer2}</label></td>
+<td><input type="radio" name="Q<%=count%>" value="${pq.policyQuestionWeightage3}"><label>${pq.policyQuestionAnswer3}</label></td>
 </tr>
 <%count++; %>
 </c:forEach>
@@ -27,6 +28,8 @@
 <br>
 <br>
 <center><input type="submit" value="Calculate Premium" style="background-color:mistyrose"></center>
+</form>
 <br>
+<center><label><h2>Proposed Premium: ${premiumValue}</h2></label></center>
 </body>
 </html>

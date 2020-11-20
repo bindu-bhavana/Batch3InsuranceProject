@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.insurance.dto.Account;
+import com.insurance.dto.UserRole;
 import com.insurance.utils.DatabaseConnection;
 import com.insurance.utils.InsuranceDBQueries;
 
@@ -35,6 +36,27 @@ public class AccountDAOImpl implements AccountDAO{
 		}
 		return rows;
 		
+	}
+	@Override
+	public Account getAccountByUser(String username) {
+		con=DatabaseConnection.getConnection();
+		Account account=null;
+		try {
+			pst=con.prepareStatement(InsuranceDBQueries.GETACCOUNTBYUSER);
+			pst.setString(1,username);
+			rs=pst.executeQuery();
+			if(rs.next()) {
+				account=new Account();
+				account.setAccountNumber(rs.getInt(1));
+				account.setBusinessSegment(rs.getString(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			DatabaseConnection.closeConnection();
+		}
+		return account;
 	}
 
 }

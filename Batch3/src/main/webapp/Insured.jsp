@@ -15,6 +15,7 @@
 </form>
 </div>
 <center><caption><h2>Welcome ${message}</h2></caption></center>
+<center><caption><h4>${message1}</h4></caption></center>
 <table align="center" cellpadding="5">
 <tr>
 <form action="AccountCreation.jsp" method="post">

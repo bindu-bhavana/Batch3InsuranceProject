@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
+import com.insurance.dto.Account;
 import com.insurance.dto.PolicyQuestions;
 import com.insurance.utils.DatabaseConnection;
 import com.insurance.utils.InsuranceDBQueries;
@@ -42,6 +45,53 @@ public class PolicyQuestionsDAOImpl implements PolicyQuestionsDAO{
 			DatabaseConnection.closeConnection();
 		}		
 		return pqlist;
+	}
+	@Override
+	public int addPolicy(int totalPremium, int accountNumber) {
+			con=DatabaseConnection.getConnection();
+			int rows=0;
+			try {
+				pst=con.prepareStatement(InsuranceDBQueries.ADDPOLICY);
+				pst.setInt(1,totalPremium);
+				pst.setInt(2,accountNumber);
+				rows=pst.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			finally {
+				DatabaseConnection.closeConnection();
+			}
+		return rows;
+	}
+	@Override
+	public int addPolicyDetails(List<Integer> wlist, String businessSegmentId) {
+		con=DatabaseConnection.getConnection();
+		PolicyQuestionsDAO dao=new PolicyQuestionsDAOImpl();
+		List<PolicyQuestions> pqlist=new ArrayList<PolicyQuestions>();
+		pqlist=dao.getPolicyQuestions(businessSegmentId);
+		PolicyQuestions pq=new PolicyQuestions();
+		List<String> answerList=new ArrayList();
+		int rows=0;
+		try {
+			rs=pst.executeQuery();
+            for(Integer i:wlist) {
+            	if(i==200) {
+            		answerList.add(pq.getPolicyQuestionAnswer1());
+            	}
+            	else if(i==400) {
+            		answerList.add(pq.getPolicyQuestionAnswer2());
+            	}
+            	else {
+            	}
+            }
+			rows=pst.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			DatabaseConnection.closeConnection();
+		}
+	return rows;
 	}
 
 }

@@ -13,5 +13,16 @@ public class PolicyQuestionsServiceImpl implements PolicyQuestionsService{
 		List<PolicyQuestions> pqlist=dao.getPolicyQuestions(businessSegmentId);
 		return pqlist;
 	}
+	@Override
+	public int addPolicy(int totalPremium, int accountNumber) {
+		int rows=dao.addPolicy(totalPremium, accountNumber);
+		return rows;
+	}
+	@Override
+	public int addPolicyDetails(List<Integer> wlist, String businessSegmentId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
 
 }

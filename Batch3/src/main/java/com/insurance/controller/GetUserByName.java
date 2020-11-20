@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.insurance.dto.Account;
 import com.insurance.dto.UserRole;
 import com.insurance.exceptions.InvalidUserException;
+import com.insurance.service.AccountService;
+import com.insurance.service.AccountServiceImpl;
 import com.insurance.service.UserRoleService;
 import com.insurance.service.UserRoleServiceImpl;
 
@@ -30,6 +33,10 @@ public class GetUserByName extends HttpServlet {
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
 		UserRoleService service=new UserRoleServiceImpl();
+		AccountService aservice=new AccountServiceImpl();
+		Account account=aservice.getAccountByUser(username);
+		//int accountNumber=account.getAccountNumber();
+		//String businessSegment=account.getBusinessSegment();
 		UserRole user=new UserRole();
 		 user=service.getUserByName(username);
 		try {
@@ -43,8 +50,19 @@ public class GetUserByName extends HttpServlet {
 			else if(user.getRoleCode().equals("222")) {
 			   request.getRequestDispatcher("/InsuranceAgent.jsp").forward(request, response);
 			}
-			else {
-				request.setAttribute("message", username);
+			else{
+				request.setAttribute("message", username);	
+				try {
+				if(account.getAccountNumber()==0) {
+					throw new NullPointerException();
+				}
+				else {
+					request.setAttribute("message1", "Your account number is "+account.getAccountNumber());
+				}
+				}
+				catch(NullPointerException e) {
+					request.setAttribute("message1", "Account has not been created...");
+				}
 				request.getRequestDispatcher("/Insured.jsp").forward(request, response);
 			}
 			

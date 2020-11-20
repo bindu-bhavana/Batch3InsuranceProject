@@ -52,6 +52,12 @@
   	<description></description>
   	<servlet-class>com.insurance.controller.CalculatePremium</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>GetAccountByUser</servlet-name>
+  	<display-name>GetAccountByUser</display-name>
+  	<description></description>
+  	<servlet-class>com.insurance.controller.GetAccountByUser</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>Sample</servlet-name>
   	<url-pattern>/Sample</url-pattern>
@@ -83,5 +89,9 @@
   <servlet-mapping>
   	<servlet-name>CalculatePremium</servlet-name>
   	<url-pattern>/CalculatePremium</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>GetAccountByUser</servlet-name>
+  	<url-pattern>/GetAccountByUser</url-pattern>
   </servlet-mapping>
 </web-app>
