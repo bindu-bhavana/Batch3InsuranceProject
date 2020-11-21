@@ -12,8 +12,12 @@
 <table align="center">
 <caption><h2>Select Business Segment</h2></caption>
 <tr>
+<td>Username</td>
+<td><input type="text" name="username"></td>
+</tr>
+<tr>
 <td>Business-Segment</td>
-<td><select name="businessSegment" onchange='this.form.submit()' required>
+<td><select name="businessSegment" required>
   <option> </option>
   <option value="BS1">Business Auto</option>
   <option value="BS2">Restaurant</option>
@@ -24,6 +28,7 @@
 </tr>
 </table>
 <br>
+<center><input type="submit" name="submit" value="Submit"></center>
 </form>
 </body>
 </html>

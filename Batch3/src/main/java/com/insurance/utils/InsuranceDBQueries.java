@@ -18,6 +18,11 @@ public class InsuranceDBQueries {
 	public static final String GETPOLICY=
 			"select policy_number from Policy where account_number=?";
 	public static final String ADDPOLICYDETAILS=
-			"insert into Policy_Details values()";
+			"insert into Policy_Details values(?,?,?)";
+	public static final String GETPOLICYDETAILS=
+			"select question_id,answer from Policy_Details where policy_number=?";
+	public static final String VIEWPOLICY=
+			"select policy_number,policy_premium from Policy where account_number=?";
+	
 	
 }

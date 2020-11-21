@@ -23,7 +23,9 @@
 <form action="BusinessSegmentSelection.jsp" method="post">
 <td><input type="submit" value="Create Policy" style="background-color:mistyrose; height: 75px; width: 150px; left: 250; top: 250;"></td>
 </form>
+<form action="ViewPolicyThroughAccount.jsp" method="post">
 <td><input type="submit" value="View Policy" style="background-color:mistyrose; height: 75px; width: 150px; left: 250; top: 250;"></td>
+</form>
 </tr>
 </table>
 </body>

@@ -10,7 +10,10 @@ import java.util.List;
 import java.util.ListIterator;
 
 import com.insurance.dto.Account;
+import com.insurance.dto.PolicyDetails;
 import com.insurance.dto.PolicyQuestions;
+import com.insurance.dto.UserRole;
+import com.insurance.dto.ViewPolicy;
 import com.insurance.utils.DatabaseConnection;
 import com.insurance.utils.InsuranceDBQueries;
 
@@ -64,34 +67,78 @@ public class PolicyQuestionsDAOImpl implements PolicyQuestionsDAO{
 		return rows;
 	}
 	@Override
-	public int addPolicyDetails(List<Integer> wlist, String businessSegmentId) {
+	public int addPolicyDetails(List<String> questionsIdList,List<String> answerList,int accountNumber) {
 		con=DatabaseConnection.getConnection();
 		PolicyQuestionsDAO dao=new PolicyQuestionsDAOImpl();
+		PolicyDetails pd=new PolicyDetails();
 		List<PolicyQuestions> pqlist=new ArrayList<PolicyQuestions>();
-		pqlist=dao.getPolicyQuestions(businessSegmentId);
-		PolicyQuestions pq=new PolicyQuestions();
-		List<String> answerList=new ArrayList();
-		int rows=0;
+        return 0;
+	}
+		
+	    
+		
+		
+	@Override
+	public List<PolicyDetails> getPolicyDetails(int policyNumber) {
+		con=DatabaseConnection.getConnection();
+		List<PolicyDetails> pdlist=new ArrayList<PolicyDetails>();
 		try {
+			pst=con.prepareStatement(InsuranceDBQueries.GETPOLICY);
+			pst.setInt(1,policyNumber);
 			rs=pst.executeQuery();
-            for(Integer i:wlist) {
-            	if(i==200) {
-            		answerList.add(pq.getPolicyQuestionAnswer1());
-            	}
-            	else if(i==400) {
-            		answerList.add(pq.getPolicyQuestionAnswer2());
-            	}
-            	else {
-            	}
-            }
-			rows=pst.executeUpdate();
+			while(rs.next()) {
+				PolicyDetails pd=new PolicyDetails();
+				pd.setQuestionId(rs.getString(1));
+				pd.setAnswer(rs.getString(2));
+				pdlist.add(pd);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			DatabaseConnection.closeConnection();
+		}		
+		return pdlist;
+	}
+	@Override
+	public PolicyDetails getPolicy(int accountNumber) {
+		con=DatabaseConnection.getConnection();
+		PolicyDetails pd=null;
+		try {
+			pst=con.prepareStatement(InsuranceDBQueries.GETPOLICY);
+			pst.setInt(1,accountNumber);
+			rs=pst.executeQuery();
+			if(rs.next()) {
+				pd=new PolicyDetails();
+				pd.setPolicyNumber(rs.getInt(1));
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		finally {
 			DatabaseConnection.closeConnection();
 		}
-	return rows;
+		return pd;
 	}
-
+	@Override
+	public ViewPolicy viewPolicy(int accountNumber) {
+		con=DatabaseConnection.getConnection();
+		ViewPolicy vp=null;
+		try {
+			pst=con.prepareStatement(InsuranceDBQueries.VIEWPOLICY);
+			pst.setInt(1,accountNumber);
+			rs=pst.executeQuery();
+			while(rs.next()) {
+				vp=new ViewPolicy();
+				vp.setPolicyNumber(rs.getInt(1));
+				vp.setPolicyPremium(rs.getInt(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			DatabaseConnection.closeConnection();
+		}
+		return vp;
+	}
 }

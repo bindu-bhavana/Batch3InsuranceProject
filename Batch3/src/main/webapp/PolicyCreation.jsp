@@ -9,7 +9,6 @@
 </head>
 <body style="background-color:snow;">
 <table align="center" cellpadding="5">
-<caption><h2>Please answer the below Questions!!!</h2></caption>
 <form action="GetPolicyQuestions" method="post">
 <%!int count=1; %>
 <c:forEach var="pq" items="${PolicyQuestionsList}"> 
@@ -17,7 +16,7 @@
 <td><b><%=count %>. ${pq.policyQuestionDescription}</b></td>
 </tr>
 <tr>
-<td><input type="radio" name="Q<%=count%>" value="${pq.policyQuestionWeightage1}" required><label>${pq.policyQuestionAnswer1}</label></td>
+<td><input type="radio" name="Q<%=count%>" value="${pq.policyQuestionWeightage1}"><label>${pq.policyQuestionAnswer1}</label></td>
 <td><input type="radio" name="Q<%=count%>" value="${pq.policyQuestionWeightage2}"><label>${pq.policyQuestionAnswer2}</label></td>
 <td><input type="radio" name="Q<%=count%>" value="${pq.policyQuestionWeightage3}"><label>${pq.policyQuestionAnswer3}</label></td>
 </tr>
@@ -27,9 +26,10 @@
 </table>
 <br>
 <br>
-<center><input type="submit" value="Calculate Premium" style="background-color:mistyrose"></center>
+<center><input type="submit" value="Create Policy" style="background-color:mistyrose"></center>
 </form>
 <br>
-<center><label><h2>Proposed Premium: ${premiumValue}</h2></label></center>
+<center><h2>Proposed Premium: ${Total}</h2></center>
+<center><h2>AccountNumber: ${AccountNumber}</h2></center>
 </body>
 </html>

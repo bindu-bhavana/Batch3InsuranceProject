@@ -4,18 +4,21 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.insurance.dto.Account;
 import com.insurance.dto.PolicyQuestions;
+import com.insurance.service.AccountService;
+import com.insurance.service.AccountServiceImpl;
 import com.insurance.service.PolicyQuestionsService;
 import com.insurance.service.PolicyQuestionsServiceImpl;
-
 
 /**
  * Servlet implementation class GetPolicyQuestions
@@ -28,43 +31,45 @@ public class GetPolicyQuestions extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//HttpSession session=request.getSession(true);
+		//ServletContext servletcontext = getServletContext();
+		PrintWriter out=response.getWriter();
+		HttpSession session=request.getSession(true);
 		String businessSegmentId=request.getParameter("businessSegment");
+		//servletcontext.setAttribute("businessId", businessSegmentId);
+		AccountService aservice=new AccountServiceImpl();
+		String username=request.getParameter("username");
+		Account account1=aservice.getAccountByUser(username);
 		PolicyQuestionsService service=new PolicyQuestionsServiceImpl();
 		List<PolicyQuestions> pqlist=service.getPolicyQuestions(businessSegmentId);
-		PrintWriter out=response.getWriter();
 		request.setAttribute("PolicyQuestionsList",pqlist);
 		request.getRequestDispatcher("PolicyCreation.jsp").include(request, response);
-		int totalPremium=0;
-		List<Integer> wlist=new ArrayList();
-		for(int i=1;i<=10;i++) {
-			wlist.add(Integer.parseInt(request.getParameter("Q"+i)));
-			if((request.getParameter("Q"+i))!=null) {
-			  totalPremium+=Integer.parseInt(request.getParameter("Q"+i));
-			}
-			else {
-				break;
-			}
+		List<String> wlist=new ArrayList<String>();
+		int sum=0;
+		try {
+		if(account1.getAccountNumber()==0) {
+			throw new NullPointerException();
 		}
-		int i=1;
-		for(PolicyQuestions pq:pqlist){
-			if((request.getParameter("Q"+i)!=null)) {
-				if((Integer.parseInt(request.getParameter("Q"+i))==200)) {
-				      List<String> answerList1=new ArrayList();
-				      answerList1.add(pq.getPolicyQuestionAnswer1());
-				}
-				else if((Integer.parseInt(request.getParameter("Q"+i))==400)){
-					  
-				}
-			}
-			else {
-				break;
-			}
-			i++;
+		else {
+		   request.setAttribute("AccountNumber",account1.getAccountNumber());
+		   session.setAttribute("AccountNumber",account1.getAccountNumber());
 		}
-		//out.println(totalPremium);
-		request.setAttribute("premiumValue", totalPremium);
+		}
+		catch(NullPointerException e) {
+			out.println("Exception");
+		}
+		for(int i=0;i<=10;i++) {
+			   if(request.getParameter("Q"+i)!=null) {
+				   wlist.add(request.getParameter("Q"+i));
+				   sum+=Integer.parseInt(request.getParameter("Q"+i));
+			   }
+		}
+		out.println(wlist);
+		request.setAttribute("Total", sum);
+		session.setAttribute("businessSegmentId", businessSegmentId);
 		request.getRequestDispatcher("PolicyCreation.jsp").forward(request, response);
+		session.setAttribute("pqlist", pqlist);
+		session.setAttribute("listOfWeightages",wlist);
+		session.setAttribute("Total",sum);
 	}
 
 	/**

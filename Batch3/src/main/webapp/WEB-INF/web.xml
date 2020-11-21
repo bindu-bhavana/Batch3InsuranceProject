@@ -47,16 +47,22 @@
   	<servlet-class>com.insurance.controller.GetPolicyQuestions</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>CalculatePremium</servlet-name>
-  	<display-name>CalculatePremium</display-name>
+  	<servlet-name>GetAnswersByPolicyNumber</servlet-name>
+  	<display-name>GetAnswersByPolicyNumber</display-name>
   	<description></description>
-  	<servlet-class>com.insurance.controller.CalculatePremium</servlet-class>
+  	<servlet-class>com.insurance.controller.GetAnswersByPolicyNumber</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>GetAccountByUser</servlet-name>
   	<display-name>GetAccountByUser</display-name>
   	<description></description>
   	<servlet-class>com.insurance.controller.GetAccountByUser</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>RetrievingValues</servlet-name>
+  	<display-name>RetrievingValues</display-name>
+  	<description></description>
+  	<servlet-class>com.insurance.controller.RetrievingValues</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Sample</servlet-name>
@@ -87,11 +93,15 @@
   	<url-pattern>/GetPolicyQuestions</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>CalculatePremium</servlet-name>
-  	<url-pattern>/CalculatePremium</url-pattern>
+  	<servlet-name>GetAnswersByPolicyNumber</servlet-name>
+  	<url-pattern>/GetAnswersByPolicyNumber</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>GetAccountByUser</servlet-name>
   	<url-pattern>/GetAccountByUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>RetrievingValues</servlet-name>
+  	<url-pattern>/RetrievingValues</url-pattern>
   </servlet-mapping>
 </web-app>
