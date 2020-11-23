@@ -18,7 +18,6 @@ public class DatabaseConnection {
 			return con;
 	    }
 	public static void closeConnection() {
-		// TODO Auto-generated method stub
 		try {
 			con.close();
 		} catch (SQLException e) {

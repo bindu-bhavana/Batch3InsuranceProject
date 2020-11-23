@@ -44,17 +44,17 @@ public class CreateAccount extends HttpServlet {
 			  Account account=new Account(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, businessSegment, username);	
 			  int rows=aservice.createAccount(account);
 			  if(rows>0) {
-				out.println("<h2>Account Created...</h2>");
+				  request.setAttribute("message", "Account Created...");
 			  }
 			  else {
-				out.println("<h2>Failed to Create Account...Please try again</h2>");
+				  request.setAttribute("message", "Failed to create account...Please try again");
 			  }
 		  }
 		}
 		catch(NullPointerException e) {
-			out.println("<h2>Username does not exists...</h2>");
+			request.setAttribute("message", "Username does not exists...");
 		}
-
+		 request.getRequestDispatcher("AccountCreation.jsp").forward(request, response);
 	}
 
 	/**

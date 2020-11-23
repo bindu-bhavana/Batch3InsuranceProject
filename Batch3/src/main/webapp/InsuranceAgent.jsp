@@ -7,6 +7,9 @@
 <title>Insurance Agent Page</title>
 </head>
 <body style="background-color:snow;">
+<div style="float:down">
+<label><b>Insurance Quote Generation</b></label>
+</div>
 <div style="float:right">
 <form align="right" action="Login.jsp" method="post">
 <label>

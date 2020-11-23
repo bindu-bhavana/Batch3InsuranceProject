@@ -7,6 +7,7 @@
 <title>Insurance Login Page</title>
 </head>
 <body style="background-color:powderblue;">
+<center><h2 style="color:red;">INSURANCE QUOTE GENERATION</h2></center>
 <form action="GetUserByName" method="post">
 <table align="center" cellpadding="5">
 <caption><h2>LOGIN</h2></caption>

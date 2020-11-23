@@ -1,9 +1,11 @@
 package com.insurance.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.insurance.dao.PolicyQuestionsDAO;
 import com.insurance.dao.PolicyQuestionsDAOImpl;
+import com.insurance.dto.Generation;
 import com.insurance.dto.PolicyDetails;
 import com.insurance.dto.PolicyQuestions;
 import com.insurance.dto.ViewPolicy;
@@ -40,6 +42,13 @@ public class PolicyQuestionsServiceImpl implements PolicyQuestionsService{
 	public ViewPolicy viewPolicy(int accountNumber) {
 		ViewPolicy vp=dao.viewPolicy(accountNumber);
 		return vp;
+	}
+	@Override
+	public List<Generation> generateReport(int accountNumber) {
+		List<Generation> rglist=new ArrayList<Generation>();
+		rglist=dao.generateReport(accountNumber);
+		return rglist;
+
 	}
 	
 

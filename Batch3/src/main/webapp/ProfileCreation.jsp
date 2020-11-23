@@ -1,12 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Profile Creation Page</title>
 </head>
-<body style="background-color:cyan;">
+<body style="background-color:snow;">
+<div style="float:down">
+<label><b>Insurance Quote Generation</b></label>
+</div>
+<div style="float:right">
+<button type="button" name="back" onclick="history.back()">Go back</button>
+</div>
 <form action="CreateUser" method="post">
 <table align="center" cellpadding="5">
 <caption><h2>NEW PROFILE</h2></caption>
@@ -35,5 +41,6 @@
 <br>
 <center><input type="submit" value="Sign Up"></center>
 </form>
+<center><h2>${message}</h2></center>
 </body>
 </html>

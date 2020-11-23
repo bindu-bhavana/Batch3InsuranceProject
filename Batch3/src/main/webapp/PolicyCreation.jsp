@@ -8,7 +8,14 @@
 <title>Policy Creation Page</title>
 </head>
 <body style="background-color:snow;">
+<div style="float:down">
+<label><b>Insurance Quote Generation</b></label>
+</div>
+<div style="float:right">
+<button type="button" name="back" onclick="history.back()">Go back</button>
+</div>
 <table align="center" cellpadding="5">
+<caption><h2>Policy Creation</h2></caption>
 <form action="GetPolicyQuestions" method="post">
 <%!int count=1; %>
 <c:forEach var="pq" items="${PolicyQuestionsList}"> 
@@ -16,7 +23,7 @@
 <td><b><%=count %>. ${pq.policyQuestionDescription}</b></td>
 </tr>
 <tr>
-<td><input type="radio" name="Q<%=count%>" value="${pq.policyQuestionWeightage1}"><label>${pq.policyQuestionAnswer1}</label></td>
+<td><input type="radio" name="Q<%=count%>" value="${pq.policyQuestionWeightage1}" required><label>${pq.policyQuestionAnswer1}</label></td>
 <td><input type="radio" name="Q<%=count%>" value="${pq.policyQuestionWeightage2}"><label>${pq.policyQuestionAnswer2}</label></td>
 <td><input type="radio" name="Q<%=count%>" value="${pq.policyQuestionWeightage3}"><label>${pq.policyQuestionAnswer3}</label></td>
 </tr>
@@ -30,6 +37,5 @@
 </form>
 <br>
 <center><h2>Proposed Premium: ${Total}</h2></center>
-<center><h2>AccountNumber: ${AccountNumber}</h2></center>
 </body>
 </html>

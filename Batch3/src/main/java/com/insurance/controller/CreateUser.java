@@ -24,6 +24,7 @@ public class CreateUser extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
 		PrintWriter out=response.getWriter();
 		String username=request.getParameter("username");
 		String password=request.getParameter("password");
@@ -33,14 +34,17 @@ public class CreateUser extends HttpServlet {
         	UserRole user=new UserRole(username,password,rolecode);
     		UserRoleService service=new UserRoleServiceImpl();
     		int rows=service.createUser(user);
-    		if(rows>0)
-    			out.println("<h2>Profile Created...</h2>");
-    		else
-    			out.println("<h2>Username already exists...</h2>");
+    		if(rows>0) {
+    			request.setAttribute("message", "Profile Created successfully...");
+    		}
+    		else {
+    			request.setAttribute("message", "Username already exists...");
+    		}
         }
         else {
-        	out.println("<h2>Passwords not matching</h2>");
+        	request.setAttribute("message", "Passwords not matching...");
         }
+        request.getRequestDispatcher("ProfileCreation.jsp").forward(request, response);
 	}
 
 	/**

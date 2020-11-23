@@ -38,6 +38,7 @@ public class GetUserByName extends HttpServlet {
 		//int accountNumber=account.getAccountNumber();
 		//String businessSegment=account.getBusinessSegment();
 		UserRole user=new UserRole();
+		boolean bvalue=false;
 		 user=service.getUserByName(username);
 		try {
 		  if(user.getUsername()==null || (!user.getPassword().equals(password))) {
@@ -58,9 +59,13 @@ public class GetUserByName extends HttpServlet {
 				}
 				else {
 					request.setAttribute("message1", "Your account number is "+account.getAccountNumber());
+					bvalue=false;
+					request.setAttribute("booleanvalue", bvalue);
 				}
 				}
 				catch(NullPointerException e) {
+					bvalue=true;
+					request.setAttribute("booleanvalue", bvalue);
 					request.setAttribute("message1", "Account has not been created...");
 				}
 				request.getRequestDispatcher("/Insured.jsp").forward(request, response);

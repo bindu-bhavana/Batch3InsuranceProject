@@ -8,6 +8,12 @@
 <title>Business Segment Selection</title>
 </head>
 <body style="background-color:snow;">
+<div style="float:down">
+<label><b>Insurance Quote Generation</b></label>
+</div>
+<div style="float:right">
+<button type="button" name="back" onclick="history.back()">Go back</button>
+</div>
 <form action="PolicyCreation" method="post">
 <table align="center">
 <caption><h2>Select Business Segment</h2></caption>

@@ -6,7 +6,13 @@
 <meta charset="ISO-8859-1">
 <title>View Policy Page</title>
 </head>
-<body  style="background-color:powderblue;">
+<body  style="background-color:snow;">
+<div style="float:down">
+<label><b>Insurance Quote Generation</b></label>
+</div>
+<div style="float:right">
+<button type="button" name="back" onclick="history.back()">Go back</button>
+</div>
 <table align="center">
 <caption style="color:red;"><h1>Policy Details</h1></caption>
 <br>

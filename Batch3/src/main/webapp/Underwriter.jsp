@@ -6,7 +6,10 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body>
+<body style="background-color:snow;">
+<div style="float:down">
+<label><b>Insurance Quote Generation</b></label>
+</div>
 <div style="float:right">
 <form align="right" action="Login.jsp" method="post">
 <label>
@@ -26,7 +29,7 @@
 <form action="ProfileCreation.jsp" method="post">
 <td><input type="submit" value="Create Profile" style="background-color:mistyrose; height: 75px; width: 150px; left: 250; top: 250;"></td>
 </form>
-<form action="ReportGeneration.jsp" method="post">
+<form action="ReportGenerate.jsp" method="post">
 <td><input type="submit" value="Generate Report" style="background-color:mistyrose; height: 75px; width: 150px; left: 250; top: 250;"></td>
 </form>
 <form action="ViewPolicyThroughAccount.jsp" method="post">

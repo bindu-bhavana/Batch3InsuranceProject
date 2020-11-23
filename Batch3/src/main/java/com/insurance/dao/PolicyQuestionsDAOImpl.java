@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import com.insurance.dto.Account;
+import com.insurance.dto.Generation;
 import com.insurance.dto.PolicyDetails;
 import com.insurance.dto.PolicyQuestions;
 import com.insurance.dto.UserRole;
@@ -140,5 +141,35 @@ public class PolicyQuestionsDAOImpl implements PolicyQuestionsDAO{
 			DatabaseConnection.closeConnection();
 		}
 		return vp;
+	}
+	@Override
+	public List<Generation> generateReport(int accountNumber) {
+		con=DatabaseConnection.getConnection();
+		List<Generation> rglist=new ArrayList<Generation>();
+		try {
+			pst=con.prepareStatement(InsuranceDBQueries.GENERATEREPORT);
+			pst.setInt(1,accountNumber);
+			rs=pst.executeQuery();
+			while(rs.next()) {
+				Generation rg=new Generation();
+				rg.setInsuredName(rs.getString(1));
+				rg.setInsuredStreet(rs.getString(2));
+				rg.setInsuredCity(rs.getString(3));
+				rg.setInsuredState(rs.getString(4));
+				rg.setInsuredZip(rs.getInt(5));
+				rg.setBusinessSegment(rs.getString(6));
+				rg.setQuestionDescription(rs.getString(7));
+				rg.setTotalPremium(rs.getInt(8));
+				rg.setAnswer(rs.getString(9));
+				rglist.add(rg);
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			DatabaseConnection.closeConnection();
+		}
+		return rglist;
 	}
 }

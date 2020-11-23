@@ -23,6 +23,6 @@ public class InsuranceDBQueries {
 			"select question_id,answer from Policy_Details where policy_number=?";
 	public static final String VIEWPOLICY=
 			"select policy_number,policy_premium from Policy where account_number=?";
-	
-	
+	public static final String GENERATEREPORT=
+			"select Accounts.insured_name,Accounts.insured_street,Accounts.insured_city,Accounts.insured_state,Accounts.insured_zip,Accounts.business_segment,Policy_Questions.pol_ques_desc,Policy.policy_premium,Policy_Details.answer from Policy_Questions inner join Accounts on Accounts.business_segment=Policy_Questions.bus_seg_id inner join Policy_Details on Policy_Details.question_id=Policy_Questions.pol_ques_id inner join Policy on Policy.policy_number=Policy_Details.policy_number where Accounts.account_number=?";
 }
