@@ -58,5 +58,25 @@ public class AccountDAOImpl implements AccountDAO{
 		}
 		return account;
 	}
+	@Override
+	public Account getUserByAccount(int accountNumber) {
+		con=DatabaseConnection.getConnection();
+		Account account=null;
+		try {
+			pst=con.prepareStatement(InsuranceDBQueries.GETUSERBYACCOUNT);
+			pst.setInt(1,accountNumber);
+			rs=pst.executeQuery();
+			if(rs.next()) {
+				account=new Account();
+				account.setUserName(rs.getString(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			DatabaseConnection.closeConnection();
+		}
+		return account;
+	}
 
 }

@@ -17,7 +17,7 @@
   </label>
 </form>
 </div>
-<center><caption><h2>Welcome Agent</h2></caption></center>
+<center><caption style="color:red;"><h2>Welcome Agent</h2></caption></center>
 <table align="center" cellpadding="5">
 <tr>
 <form action="AccountCreation.jsp" method="post">

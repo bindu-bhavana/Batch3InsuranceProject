@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.insurance.dto.Account;
 import com.insurance.dto.PolicyDetails;
 import com.insurance.dto.ViewPolicy;
+import com.insurance.service.AccountService;
+import com.insurance.service.AccountServiceImpl;
 import com.insurance.service.PolicyQuestionsService;
 import com.insurance.service.PolicyQuestionsServiceImpl;
 
@@ -33,6 +36,9 @@ public class GetAnswersByPolicyNumber extends HttpServlet {
 		PolicyQuestionsService service=new PolicyQuestionsServiceImpl();
 		//PolicyDetails pd=service.getPolicy(accountNumber);
 		ViewPolicy vp=service.viewPolicy(accountNumber);
+		AccountService aservice=new AccountServiceImpl();
+		Account account=aservice.getUserByAccount(accountNumber);
+		String username=account.getUserName();
 		int policyNumber=0;
 		int totalPremium=0;
 		try {
@@ -46,11 +52,10 @@ public class GetAnswersByPolicyNumber extends HttpServlet {
 		}
 		catch(NullPointerException e) {
 		}
+		request.setAttribute("username", username);
 		request.setAttribute("policyNumber",policyNumber);
 		request.setAttribute("totalPremium", totalPremium);
 		request.getRequestDispatcher("ViewPolicy.jsp").forward(request, response);
-		//out.println(policyNumber);
-		//out.println(totalPremium);
 	}
 
 	/**

@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -62,18 +63,18 @@ public class AddPolicyDetails extends HttpServlet {
 		rows1=service.addPolicyDetails(policyNumber, questionIdList, answerList);
 		try {
 		if(rows1>0) {
-			//request.setAttribute("message", "Policy details added successfully");
-			out.println("policy added");
+			request.setAttribute("message1", "Policy details added successfully");
+			out.println("policy details added");
 		}
 		else {
-			//request.setAttribute("message", "Policy details already exists");
-			out.println("Policy not  added");
+			request.setAttribute("message1", "Policy details already exists");
+			out.println("Policy details not  added");
 			throw new NullPointerException();
 		}
 		}
 		catch(NullPointerException e) {
 		}
-		 //request.getRequestDispatcher("AddPolicyAndDetails.jsp").forward(request, response);
+		 request.getRequestDispatcher("AddPolicyAndDetails.jsp").forward(request, response);
 	}
 
 	private int list(int i) {

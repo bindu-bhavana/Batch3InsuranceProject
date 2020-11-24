@@ -16,4 +16,9 @@ public class AccountServiceImpl implements AccountService{
 		Account account=dao.getAccountByUser(username);
 		return account;
 	}
+	@Override
+	public Account getUserByAccount(int accountNumber) {
+		Account account=dao.getUserByAccount(accountNumber);
+		return account;
+	}
 }

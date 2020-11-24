@@ -30,6 +30,11 @@ public class UserRole {
 	public void setRoleCode(String roleCode) {
 		this.roleCode = roleCode;
 	}
-	
+	 @Override
+	   public String toString() {
+	        return ("username:"+this.getUsername()+
+	                    " password:"+ this.getPassword() +
+	                    " rolecode:"+ this.getRoleCode());
+	 }
 
 }

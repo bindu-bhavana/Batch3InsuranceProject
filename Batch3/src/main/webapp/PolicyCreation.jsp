@@ -37,5 +37,6 @@
 </form>
 <br>
 <center><h2>Proposed Premium: ${Total}</h2></center>
+<a href="AddPolicyAndDetails.jsp">Click here to finish</a>
 </body>
 </html>

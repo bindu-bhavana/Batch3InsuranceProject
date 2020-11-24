@@ -15,7 +15,7 @@
 </div>
 <form action="GetAnswersByPolicyNumber" method="post">
 <table align="center">
-<caption><h2>Enter Account Number</h2></caption>
+<caption><h2>Please confirm your account number</h2></caption>
 <tr>
 <td>Account Number</td>
 <td><input type="text" name="accountNumber" required></td>

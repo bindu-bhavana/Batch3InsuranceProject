@@ -21,6 +21,7 @@ import com.insurance.service.PolicyQuestionsServiceImpl;
 /**
  * Servlet implementation class AddPolicy
  */
+@WebServlet("/AddPolicyAndDetails")
 public class AddPolicy extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -40,13 +41,13 @@ public class AddPolicy extends HttpServlet {
 		int rows=service.addPolicy(totalPremium, accountNumber);
 	    try {
 	    if(rows>0) {
-	    	//request.setAttribute("message", "Policy added successfully");
-	    	//request.getRequestDispatcher("AddPolicyDetails").forward(request, response);
+	    	request.setAttribute("message", "Policy added successfully");
+	    	request.getRequestDispatcher("AddPolicyAndDetails.jsp").forward(request, response);
 	    	out.println("added");
 	    }
 	    else {
-	    	//request.setAttribute("message", "Policy already exists");
-	    	//request.getRequestDispatcher("AddPolicyDetails").forward(request, response);
+	    	request.setAttribute("message", "Policy already exists");
+	    	request.getRequestDispatcher("AddPolicyAndDetails.jsp").forward(request, response);
 	    	out.println("not added");
 	    	throw new NullPointerException();
 	    }

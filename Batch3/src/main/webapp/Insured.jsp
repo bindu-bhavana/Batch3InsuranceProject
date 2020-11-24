@@ -18,7 +18,7 @@
   </label>
 </form>
 </div>
-<center><caption><h2>Welcome ${message}</h2></caption></center>
+<center><caption style="color:red;"><h2>Welcome ${message}</h2></caption></center>
 <center><caption><h4>${message1}</h4></caption></center>
 <table align="center" cellpadding="5">
 <tr>

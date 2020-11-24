@@ -17,7 +17,10 @@
 <caption style="color:red;"><h1>Policy Details</h1></caption>
 <br>
 <tr>
-<td><center><h3>Your Policy Number: ${policyNumber}</h3></center></td>
+<td><center><h3>Username: ${username}</h3></center></td>
+</tr>
+<tr>
+<td><center><h3>Policy Number: ${policyNumber}</h3></center></td>
 </tr>
 <tr>
 <td><center><h3>Proposed Premium: ${totalPremium}</h3></center></td>

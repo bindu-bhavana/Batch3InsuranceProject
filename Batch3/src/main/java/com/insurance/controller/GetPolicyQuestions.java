@@ -53,10 +53,7 @@ public class GetPolicyQuestions extends HttpServlet {
 		else {
 		   request.setAttribute("AccountNumber",account1.getAccountNumber());
 		   session.setAttribute("AccountNumber",account1.getAccountNumber());
-		   //sc.setAttribute("AccountNumber", account1.getAccountNumber());
 		   session.setAttribute("businessSegmentId", account1.getBusinessSegment());
-		   //sc.setAttribute("businessSegmentId", account1.getBusinessSegment());
-		   System.out.println("Session Created");
 		}
 		}
 		catch(NullPointerException e) {
@@ -74,9 +71,6 @@ public class GetPolicyQuestions extends HttpServlet {
 		//session.setAttribute("pqlist", pqlist);
 		session.setAttribute("listOfWeightages",wlist);
 		session.setAttribute("Total",sum);
-		sc.setAttribute("listOfWeightages",wlist);
-		sc.setAttribute("Total",sum);
-		System.out.println("Session1 Created");
 	}
 
 	/**
