@@ -34,17 +34,14 @@ public class ReportGeneration extends HttpServlet {
 		List<Generation> rglist=service.generateReport(accountNumber);
 		PrintWriter out=response.getWriter();	
 		ViewPolicy vp=new ViewPolicy();
+		
 		try {
-			if(accountNumber==vp.getAccountNumber()) {
-				request.setAttribute("Report",rglist);	
-				request.getRequestDispatcher("ViewReport.jsp").forward(request, response);
-			}
-			else {
-				request.setAttribute("message","This account does not have any record");
-				request.getRequestDispatcher("ReportGenerate.jsp").forward(request, response);
-			}
+			request.setAttribute("Report",rglist);	
+		    request.getRequestDispatcher("ViewReport.jsp").forward(request, response);
 		}
 		catch(NullPointerException e) {
+			request.setAttribute("message","This account does not have any record");
+			request.getRequestDispatcher("ReportGenerate.jsp").forward(request, response);
 		}
 		
 	}

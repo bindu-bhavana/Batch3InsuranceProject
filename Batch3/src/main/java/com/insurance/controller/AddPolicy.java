@@ -14,51 +14,46 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.insurance.dto.PolicyQuestions;
+import com.insurance.dto.ViewPolicy;
 import com.insurance.service.PolicyQuestionsService;
 import com.insurance.service.PolicyQuestionsServiceImpl;
 
 /**
- * Servlet implementation class RetrievingValues
+ * Servlet implementation class AddPolicy
  */
-@WebServlet("/BusinessSegmentSelection")
-public class RetrievingValues extends HttpServlet {
+public class AddPolicy extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//ServletContext sc = getServletContext();
-		//String businessSegmentId = (String)sc.getAttribute("businessId");
-		HttpSession session=request.getSession(true);
+		HttpSession session=request.getSession();
 		String businessSegment=(String) session.getAttribute("businessSegmentId");
 	    int totalPremium=(int) session.getAttribute("Total");
 	    int accountNumber=(int) session.getAttribute("AccountNumber");
-	    ArrayList<String> list=(ArrayList<String>) session.getAttribute("listOfWeightages");  
 	    PrintWriter out=response.getWriter();
 	    PolicyQuestionsService service=new PolicyQuestionsServiceImpl();
-	    int rows=service.addPolicy(totalPremium, accountNumber);
+		List<PolicyQuestions> pqlist=service.getPolicyQuestions(businessSegment);
+		//ViewPolicy vp=service.viewPolicy(accountNumber);
+		//int policyNumber=vp.getPolicyNumber();
+		int rows=service.addPolicy(totalPremium, accountNumber);
 	    try {
 	    if(rows>0) {
-	    	out.println("Policy added");
+	    	//request.setAttribute("message", "Policy added successfully");
+	    	//request.getRequestDispatcher("AddPolicyDetails").forward(request, response);
+	    	out.println("added");
 	    }
 	    else {
-	    	out.println("Policy not added");
+	    	//request.setAttribute("message", "Policy already exists");
+	    	//request.getRequestDispatcher("AddPolicyDetails").forward(request, response);
+	    	out.println("not added");
 	    	throw new NullPointerException();
 	    }
 	    }
 	    catch(NullPointerException e) {
 	    }
-	    out.println(businessSegment);
-	    out.println(totalPremium);
-	    out.println(accountNumber);
-	    out.println(list);
-	}
-	
-
-	private int list(int i) {
-		// TODO Auto-generated method stub
-		return 0;
+	    //request.getRequestDispatcher("AddPolicyAndDetails.jsp").forward(request, response);
 	}
 
 	/**

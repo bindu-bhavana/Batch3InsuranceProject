@@ -23,11 +23,6 @@ public class PolicyQuestionsServiceImpl implements PolicyQuestionsService{
 		return rows;
 	}
 	@Override
-	public int addPolicyDetails(List<String> questionIdList, List<String> answerList,int accountNumber) {
-		int rows=dao.addPolicyDetails(questionIdList,answerList, accountNumber);			
-		return rows;
-	}
-	@Override
 	public List<PolicyDetails> getPolicyDetails(int policyNumber) {
 		List<PolicyDetails> pdlist=dao.getPolicyDetails(policyNumber);
 		return pdlist;
@@ -49,6 +44,11 @@ public class PolicyQuestionsServiceImpl implements PolicyQuestionsService{
 		rglist=dao.generateReport(accountNumber);
 		return rglist;
 
+	}
+	@Override
+	public int addPolicyDetails(int policyNumber, List<String> questionIdList, List<String> answerList) {
+		int rows=dao.addPolicyDetails(policyNumber, questionIdList, answerList);
+		return rows;
 	}
 	
 

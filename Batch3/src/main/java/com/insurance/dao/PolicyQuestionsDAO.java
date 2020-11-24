@@ -10,9 +10,9 @@ import com.insurance.dto.ViewPolicy;
 public interface PolicyQuestionsDAO {
      public List<PolicyQuestions> getPolicyQuestions(String businessSegmentId);
      public int addPolicy(int totalPremium,int accountNumber);
-     public int addPolicyDetails(List<String> questionIdList,List<String> answerList,int accountNumber);
      public List<PolicyDetails> getPolicyDetails(int policyNumber);
      public PolicyDetails getPolicy(int accountNumber);
      public ViewPolicy viewPolicy(int accountNumber);
      public List<Generation> generateReport(int accountNumber);
+     public int addPolicyDetails(int policyNumber,List<String> questionIdList,List<String> answerList);
 }

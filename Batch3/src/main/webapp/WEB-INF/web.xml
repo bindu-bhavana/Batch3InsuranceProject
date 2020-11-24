@@ -59,16 +59,22 @@
   	<servlet-class>com.insurance.controller.GetAccountByUser</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>RetrievingValues</servlet-name>
-  	<display-name>RetrievingValues</display-name>
-  	<description></description>
-  	<servlet-class>com.insurance.controller.RetrievingValues</servlet-class>
-  </servlet>
-  <servlet>
   	<servlet-name>ReportGeneration</servlet-name>
   	<display-name>ReportGeneration</display-name>
   	<description></description>
   	<servlet-class>com.insurance.controller.ReportGeneration</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddPolicyDetails</servlet-name>
+  	<display-name>AddPolicyDetails</display-name>
+  	<description></description>
+  	<servlet-class>com.insurance.controller.AddPolicyDetails</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>AddPolicy</servlet-name>
+  	<display-name>AddPolicy</display-name>
+  	<description></description>
+  	<servlet-class>com.insurance.controller.AddPolicy</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>Sample</servlet-name>
@@ -107,11 +113,15 @@
   	<url-pattern>/GetAccountByUser</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>RetrievingValues</servlet-name>
-  	<url-pattern>/RetrievingValues</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
   	<servlet-name>ReportGeneration</servlet-name>
   	<url-pattern>/ReportGeneration</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddPolicyDetails</servlet-name>
+  	<url-pattern>/AddPolicyDetails</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddPolicy</servlet-name>
+  	<url-pattern>/AddPolicy</url-pattern>
   </servlet-mapping>
 </web-app>

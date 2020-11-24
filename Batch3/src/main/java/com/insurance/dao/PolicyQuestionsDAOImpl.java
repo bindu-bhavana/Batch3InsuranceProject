@@ -67,18 +67,7 @@ public class PolicyQuestionsDAOImpl implements PolicyQuestionsDAO{
 			}
 		return rows;
 	}
-	@Override
-	public int addPolicyDetails(List<String> questionsIdList,List<String> answerList,int accountNumber) {
-		con=DatabaseConnection.getConnection();
-		PolicyQuestionsDAO dao=new PolicyQuestionsDAOImpl();
-		PolicyDetails pd=new PolicyDetails();
-		List<PolicyQuestions> pqlist=new ArrayList<PolicyQuestions>();
-        return 0;
-	}
-		
-	    
-		
-		
+	
 	@Override
 	public List<PolicyDetails> getPolicyDetails(int policyNumber) {
 		con=DatabaseConnection.getConnection();
@@ -130,6 +119,7 @@ public class PolicyQuestionsDAOImpl implements PolicyQuestionsDAO{
 			pst.setInt(1,accountNumber);
 			rs=pst.executeQuery();
 			while(rs.next()) {
+				System.out.println(rs.getInt(1)+rs.getInt(2));
 				vp=new ViewPolicy();
 				vp.setPolicyNumber(rs.getInt(1));
 				vp.setPolicyPremium(rs.getInt(2));
@@ -171,5 +161,26 @@ public class PolicyQuestionsDAOImpl implements PolicyQuestionsDAO{
 			DatabaseConnection.closeConnection();
 		}
 		return rglist;
+	}
+	@Override
+	public int addPolicyDetails(int policyNumber, List<String> questionIdList, List<String> answerList) {
+		con=DatabaseConnection.getConnection();
+		int rows=0;
+		try {
+			pst=con.prepareStatement(InsuranceDBQueries.ADDPOLICYDETAILS);
+			for(int i=0;i<questionIdList.size();i++) {
+			    pst.setInt(1,policyNumber);
+			    pst.setString(2,questionIdList.get(i));
+			    pst.setString(3, answerList.get(i));
+			    rows=pst.executeUpdate();
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			DatabaseConnection.closeConnection();
+		}
+	return rows;
 	}
 }

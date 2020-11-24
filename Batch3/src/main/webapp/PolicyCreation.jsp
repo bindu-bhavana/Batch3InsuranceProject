@@ -33,7 +33,7 @@
 </table>
 <br>
 <br>
-<center><input type="submit" value="Create Policy" style="background-color:mistyrose"></center>
+<center><input type="submit" value="Calculate Premium" style="background-color:mistyrose"></center>
 </form>
 <br>
 <center><h2>Proposed Premium: ${Total}</h2></center>

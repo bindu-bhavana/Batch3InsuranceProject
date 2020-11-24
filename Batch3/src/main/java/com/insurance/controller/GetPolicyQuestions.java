@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import com.insurance.dto.Account;
 import com.insurance.dto.PolicyQuestions;
+import com.insurance.dto.ViewPolicy;
 import com.insurance.service.AccountService;
 import com.insurance.service.AccountServiceImpl;
 import com.insurance.service.PolicyQuestionsService;
@@ -31,11 +32,10 @@ public class GetPolicyQuestions extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//ServletContext servletcontext = getServletContext();
 		PrintWriter out=response.getWriter();
+		ServletContext sc=request.getServletContext();
 		HttpSession session=request.getSession(true);
 		String businessSegmentId=request.getParameter("businessSegment");
-		//servletcontext.setAttribute("businessId", businessSegmentId);
 		AccountService aservice=new AccountServiceImpl();
 		String username=request.getParameter("username");
 		Account account1=aservice.getAccountByUser(username);
@@ -46,12 +46,17 @@ public class GetPolicyQuestions extends HttpServlet {
 		List<String> wlist=new ArrayList<String>();
 		int sum=0;
 		try {
-		if(account1.getAccountNumber()==0) {
+		account1.setBusinessSegment(businessSegmentId);
+		if(account1.getAccountNumber()==0 && account1.getBusinessSegment()==null) {
 			throw new NullPointerException();
 		}
 		else {
 		   request.setAttribute("AccountNumber",account1.getAccountNumber());
 		   session.setAttribute("AccountNumber",account1.getAccountNumber());
+		   //sc.setAttribute("AccountNumber", account1.getAccountNumber());
+		   session.setAttribute("businessSegmentId", account1.getBusinessSegment());
+		   //sc.setAttribute("businessSegmentId", account1.getBusinessSegment());
+		   System.out.println("Session Created");
 		}
 		}
 		catch(NullPointerException e) {
@@ -63,13 +68,15 @@ public class GetPolicyQuestions extends HttpServlet {
 				   sum+=Integer.parseInt(request.getParameter("Q"+i));
 			   }
 		}
-		out.println(wlist);
+		//out.println(wlist);
 		request.setAttribute("Total", sum);
-		session.setAttribute("businessSegmentId", businessSegmentId);
 		request.getRequestDispatcher("PolicyCreation.jsp").forward(request, response);
-		session.setAttribute("pqlist", pqlist);
+		//session.setAttribute("pqlist", pqlist);
 		session.setAttribute("listOfWeightages",wlist);
 		session.setAttribute("Total",sum);
+		sc.setAttribute("listOfWeightages",wlist);
+		sc.setAttribute("Total",sum);
+		System.out.println("Session1 Created");
 	}
 
 	/**
