@@ -34,7 +34,6 @@ public class ReportGeneration extends HttpServlet {
 		List<Generation> rglist=service.generateReport(accountNumber);
 		PrintWriter out=response.getWriter();	
 		ViewPolicy vp=new ViewPolicy();
-		
 		try {
 			request.setAttribute("Report",rglist);	
 		    request.getRequestDispatcher("ViewReport.jsp").forward(request, response);

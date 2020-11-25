@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Report Page</title>
 </head>
 <body style="background-color:snow;">
 <div style="float:down">
