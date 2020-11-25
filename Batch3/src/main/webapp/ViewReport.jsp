@@ -9,17 +9,17 @@
 </head>
 <body style="background-color:snow;">
 <div style="float:down">
-<label><b>Insurance Quote Generation</b></label>
+<label style="color:#9C27B0;"><b>Insurance Quote Generation</b></label>
 </div>
 <form action="ReportGeneration">
 <div style="float:right">
-<button type="button" name="back" onclick="history.back()">Go back</button>
+<button type="button" style="border-radius: 5em; background-color:#9C27B0; color:white;" name="back" onclick="history.go(-2)">Go back</button>
 </div>
 <table align="center">
-<caption><h2>REPORT</h2></caption>
+<caption><h2><i>REPORT</i></h2></caption>
 </table>
 <table align="center">
-<caption><h3>Insured Details</h3></caption>
+<caption><h3 style="color:#9C27B0;">Insured Details</h3></caption>
 <%!int count=0; %>
 <c:forEach var="rg" items="${Report}" >
 <%if(count==0){%>
@@ -55,7 +55,7 @@
 </c:forEach>
 </table>
 <table align="center">
-<caption><h3>Selected Options</h3></caption>
+<caption><h3 style="color:#9C27B0;">Selected Options</h3></caption>
 <th>Questions Description</th>
 <th>Answer</th>
 <c:forEach var="rg1" items="${Report}"> 
@@ -64,6 +64,7 @@
 <td>${rg1.answer}</td>
 </tr>
 </c:forEach>
+<%count=0; %>
 </table>
 </form>
 </body>

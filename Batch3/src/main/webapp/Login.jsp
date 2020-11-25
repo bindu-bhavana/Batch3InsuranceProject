@@ -93,12 +93,6 @@
         font-size: 13px;
         box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
     }
-    a {
-        text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-        color: #E1BEE7;
-        text-decoration: none
-    }
-    
     @media (max-width: 600px) {
         .main {
             border-radius: 0px;
@@ -112,9 +106,9 @@
     <p class="sign" align="center">LOGIN</p>
     <form class="form1">
       <center><b>Username</b></center>
-      <input class="un " type="text" align="center">
+      <input class="un " type="text" align="center" name="username">
       <center><b>Password</b></center>
-      <input class="pass" type="password" align="center">
+      <input class="pass" type="password" align="center" name="password">
       <input type="submit" class="submit" value="Sign In" align="center">
       <center><h4 style="color:#9C27B0;">${message}</h4></center>
       </div>

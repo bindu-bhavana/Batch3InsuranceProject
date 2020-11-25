@@ -42,19 +42,15 @@ public class AddPolicy extends HttpServlet {
 	    try {
 	    if(rows>0) {
 	    	request.setAttribute("message", "Policy added successfully");
-	    	request.getRequestDispatcher("AddPolicyAndDetails.jsp").forward(request, response);
-	    	out.println("added");
 	    }
 	    else {
 	    	request.setAttribute("message", "Policy already exists");
-	    	request.getRequestDispatcher("AddPolicyAndDetails.jsp").forward(request, response);
-	    	out.println("not added");
 	    	throw new NullPointerException();
 	    }
 	    }
 	    catch(NullPointerException e) {
 	    }
-	    //request.getRequestDispatcher("AddPolicyAndDetails.jsp").forward(request, response);
+	    request.getRequestDispatcher("AddPolicyAndDetails.jsp").forward(request, response);
 	}
 
 	/**

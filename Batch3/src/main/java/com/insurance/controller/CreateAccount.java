@@ -43,8 +43,9 @@ public class CreateAccount extends HttpServlet {
 		  if(user.getUsername().equals(username)) {
 			  Account account=new Account(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, businessSegment, username);	
 			  int rows=aservice.createAccount(account);
+			  Account account1=aservice.getAccountByUser(username);
 			  if(rows>0) {
-				  request.setAttribute("message", "Account Created...");
+				  request.setAttribute("message", "Account Created...Your account number is "+account1.getAccountNumber());
 			  }
 			  else {
 				  request.setAttribute("message", "Failed to create account...Please try again");

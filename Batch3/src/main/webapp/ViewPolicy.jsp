@@ -8,22 +8,22 @@
 </head>
 <body  style="background-color:snow;">
 <div style="float:down">
-<label><b>Insurance Quote Generation</b></label>
+<label style="color:#9C27B0;"><b>Insurance Quote Generation</b></label>
 </div>
 <div style="float:right">
-<button type="button" name="back" onclick="history.back()">Go back</button>
+<button type="button" style="border-radius: 5em; background-color:#9C27B0; color:white;" name="back" onclick="history.go(-2)">Go back</button>
 </div>
 <table align="center">
-<caption style="color:red;"><h1>Policy Details</h1></caption>
+<caption><h1 style="color:#9C27B0;"><i>Policy Details</i></h1></caption>
 <br>
 <tr>
-<td><center><h3>Username: ${username}</h3></center></td>
+<td><center><h3><b>Username:</b> ${username}</h3></center></td>
 </tr>
 <tr>
-<td><center><h3>Policy Number: ${policyNumber}</h3></center></td>
+<td><center><h3><b>Policy Number:</b> ${policyNumber}</h3></center></td>
 </tr>
 <tr>
-<td><center><h3>Proposed Premium: ${totalPremium}</h3></center></td>
+<td><center><h3><b>Proposed Premium:</b> ${totalPremium}</h3></center></td>
 </tr>
 </table>
 </body>

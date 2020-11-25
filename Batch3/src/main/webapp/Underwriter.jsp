@@ -8,34 +8,36 @@
 </head>
 <body style="background-color:snow;">
 <div style="float:down">
-<label><b>Insurance Quote Generation</b></label>
+<label style="color:#9C27B0;"><b>Insurance Quote Generation</b></label>
 </div>
 <div style="float:right">
 <form align="right" action="Login.jsp" method="post">
 <label>
-  <input name="submit2" type="submit" value="log out">
+  <input name="submit2" type="submit" style="border-radius: 5em; background-color:#9C27B0; color:white;" value="log out">
   </label>
 </form>
 </div>
-<center><caption style="color:red;"><h2>Welcome Admin</h2></caption></center>
+<center><caption><h2><i>Welcome Admin</i></h2></caption></center>
+<div style="float:center">
 <table align="center" cellpadding="5">
 <tr>
 <form action="ProfileCreation.jsp" method="post">
-<td><input type="submit" value="Create Profile" style="background-color:mistyrose; height: 75px; width: 150px; left: 250; top: 250;"></td>
+<td><input type="submit" value="Create Profile" style="background-color:#9C27B0; border-radius: 5em; color:white; height: 75px; width: 150px; left: 250; top: 250;"></td>
 </form>
 <form action="AccountCreation.jsp" method="post">
-<td><input type="submit" value="Create Account" style="background-color:mistyrose; height: 75px; width: 150px; left: 250; top: 250;"></td>
+<td><input type="submit" value="Create Account" style="background-color:#9C27B0; border-radius: 5em; color:white; height: 75px; width: 150px; left: 250; top: 250;"></td>
 </form>
 <form action="BusinessSegmentSelection.jsp" method="post">
-<td><input type="submit" value="Create Policy" style="background-color:mistyrose; height: 75px; width: 150px; left: 250; top: 250;"></td>
+<td><input type="submit" value="Create Policy" style="background-color:#9C27B0; border-radius: 5em; color:white; height: 75px; width: 150px; left: 250; top: 250;"></td>
 </form>
 <form action="ViewPolicyThroughAccount.jsp" method="post">
-<td><input type="submit" value="View Policy" style="background-color:mistyrose; height: 75px; width: 150px; left: 250; top: 250;"></td>
+<td><input type="submit" value="View Policy" style="background-color:#9C27B0; border-radius: 5em; color:white; height: 75px; width: 150px; left: 250; top: 250;"></td>
 </form>
 <form action="ReportGenerate.jsp" method="post">
-<td><input type="submit" value="Generate Report" style="background-color:mistyrose; height: 75px; width: 150px; left: 250; top: 250;"></td>
+<td><input type="submit" value="Generate Report" style="background-color:#9C27B0; border-radius: 5em; color:white; height: 75px; width: 150px; left: 250; top: 250;"></td>
 </form>
 </tr>
 </table>
+</div>
 </body>
 </html>

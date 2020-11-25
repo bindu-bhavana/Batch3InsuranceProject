@@ -119,7 +119,6 @@ public class PolicyQuestionsDAOImpl implements PolicyQuestionsDAO{
 			pst.setInt(1,accountNumber);
 			rs=pst.executeQuery();
 			while(rs.next()) {
-				System.out.println(rs.getInt(1)+rs.getInt(2));
 				vp=new ViewPolicy();
 				vp.setPolicyNumber(rs.getInt(1));
 				vp.setPolicyPremium(rs.getInt(2));
