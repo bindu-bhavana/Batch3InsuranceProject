@@ -28,8 +28,12 @@
 <div style="float:down">
 <label style="color:#9C27B0;"><b>Insurance Quote Generation</b></label>
 </div>
+<br>
+<div style="float:left">
+<button type="button" name="back" style="border-radius: 5em; background-color:#9C27B0; background: linear-gradient(to right, #9C27B0, #E040FB); color:white;" onclick="history.go(-2)">Home page</button>
+</div>
 <div style="float:right">
-<button type="button" name="back" style="border-radius: 5em; background-color:#9C27B0; color:white;" onclick="history.go(-2)">Go back</button>
+<button type="button" name="back" style="border-radius: 5em; background-color:#9C27B0; background: linear-gradient(to right, #9C27B0, #E040FB); color:white;" onclick="history.back()">Go back</button>
 </div>
 <form action="CreateUser" method="post">
 <table align="center" cellpadding="5">
